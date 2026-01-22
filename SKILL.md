@@ -1,6 +1,6 @@
 ---
 name: pr-commit-workflow
-description: This skill should be used when creating commits or pull requests, enforcing a human-written PR structure, intent capture, and evidence in agentic workflows.
+description: This skill should be used when the user asks to "create a commit", "make a commit", "commit these changes", "create a pull request", "make a PR", "create a PR", "open a pull request", or mentions git commits or PRs. Enforces human-written PR structure, intent capture, and evidence in agentic workflows.
 ---
 
 # PR + Commit Workflow
