@@ -12,44 +12,9 @@ A skill for high-signal PR and commit workflows in agentic AI coding. Works with
 
 ## Installation
 
-### Claude Code
-
-Claude Code requires skills to be in a plugin structure. Give this to Claude:
-
-> Install the PR workflow skill from https://github.com/djvdorp/pr-workflow-skill. Create a plugin at ~/.claude/plugins/pr-workflow-plugin/ with the skill in skills/pr-workflow/, and register it in known_marketplaces.json.
-
-Or install manually:
-
-```bash
-# Clone to a plugin directory
-git clone https://github.com/djvdorp/pr-workflow-skill.git ~/.claude/plugins/pr-workflow-plugin/skills/pr-workflow
-
-# Create plugin.json
-mkdir -p ~/.claude/plugins/pr-workflow-plugin/.claude-plugin
-cat > ~/.claude/plugins/pr-workflow-plugin/.claude-plugin/plugin.json << 'EOF'
-{
-  "name": "pr-workflow",
-  "description": "High-signal PR and commit workflow with human-written intent enforcement",
-  "author": {"name": "djvdorp"}
-}
-EOF
-
-# Register local plugins (if not already)
-cat > ~/.claude/plugins/known_marketplaces.json << 'EOF'
-{
-  "local": {
-    "source": {"source": "local"},
-    "installLocation": "/home/daniel/.claude/plugins"
-  }
-}
-EOF
-```
-
-### Codex / Other Agents
-
 Give this to your coding agent:
 
-> Install the PR workflow skill from https://github.com/djvdorp/pr-workflow-skill — clone it to wherever I keep skills, and wire it up so it activates when I create commits or PRs.
+> Install the PR workflow skill from https://github.com/joshp123/pr-workflow-skill — clone it to wherever I keep skills, and wire it up so it activates when I create commits or PRs.
 
 ## Usage
 
