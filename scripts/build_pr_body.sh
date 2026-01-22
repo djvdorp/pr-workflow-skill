@@ -17,6 +17,22 @@ fi
 model="${CODEX_MODEL:-${OPENAI_MODEL:-${ANTHROPIC_MODEL:-${CLAUDE_MODEL:-${CURSOR_MODEL:-${LLM_MODEL:-unknown}}}}}}"
 thinking="${THINKING_LEVEL:-${CODEX_THINKING_LEVEL:-${OPENAI_THINKING_LEVEL:-unknown}}}"
 
+codex_config="${CODEX_CONFIG_PATH:-${HOME}/.codex/config.toml}"
+if [[ ("$model" == "unknown" || "$thinking" == "unknown") && -f "$codex_config" ]]; then
+  if [[ "$model" == "unknown" ]]; then
+    config_model="$(awk -F'"' '/^model[[:space:]]*=/ {print $2; exit}' "$codex_config" || true)"
+    if [[ -n "$config_model" ]]; then
+      model="$config_model"
+    fi
+  fi
+  if [[ "$thinking" == "unknown" ]]; then
+    config_thinking="$(awk -F'"' '/^model_reasoning_effort[[:space:]]*=/ {print $2; exit}' "$codex_config" || true)"
+    if [[ -n "$config_thinking" ]]; then
+      thinking="$config_thinking"
+    fi
+  fi
+fi
+
 terminal="${TERM_PROGRAM:-${LC_TERMINAL:-unknown}}"
 terminal_ver="${TERM_PROGRAM_VERSION:-${LC_TERMINAL_VERSION:-}}"
 if [[ -n "$terminal_ver" ]]; then
